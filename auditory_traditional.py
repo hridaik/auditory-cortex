@@ -1,16 +1,15 @@
-from keras.api import layers, models
+import tensorflow as tf
+from tensorflow import keras
 import os
 import numpy as np
-import tensorflow as tf
 from sklearn.model_selection import train_test_split
-from keras.api.utils import to_categorical
-from keras.api.saving import register_keras_serializable 
+from keras import layers, models, utils, saving
 import librosa
 import matplotlib.pyplot as plt
 import random
 import shutil
 
-@register_keras_serializable()
+@saving.register_keras_serializable()
 class AuditoryCortexNet(models.Model):
     def __init__(self, input_shape, num_classes, **kwargs):
         """
@@ -134,7 +133,7 @@ def load_cochleagrams(dataset_dir, num_classes):
                 X.append(cochleagram)
                 y.append(label_map[label])
     
-    return np.array(X), to_categorical(y, num_classes=num_classes)
+    return np.array(X), utils.to_categorical(y, num_classes=num_classes)
 
 def prepare_data(dataset_dir, num_classes, test_size=0.2, val_size=0.2):
     """
