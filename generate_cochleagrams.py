@@ -4,10 +4,10 @@ import numpy as np
 import scipy.ndimage
 
 # Parameters for cochleagram generation
-sampling_rate = 16000
-n_fft = 1024
-hop_length = 512
-n_mels = 128
+sampling_rate = 16000 # Hz
+n_fft = 1024 # FFT window
+hop_length = 512 # 50% overlap between FFT windows
+n_mels = 128 # Frequency bins
 output_dir = "C:/Users/hridai/Desktop/DONN/datasets/cochleagrams"
 
 def process_audio_to_cochleagram(audio_path):
